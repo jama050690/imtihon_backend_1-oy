@@ -13,19 +13,32 @@ app.use("/lib", express.static("lib"));
 
 // DATA
 const tableData = [
-  { scope: "#", first: "First Name", last: "Last Name", email: "Email" },
   {
     scope: 1,
     first: "Jamshiddin",
     last: "Babajonov",
     email: "jbm050690@mail.com",
+    country: "Uzbekiston",
+    zip: 123,
+    status: "member",
   },
-  { scope: 2, first: "Tolmas", last: "O'rinov", email: "o'rinov_007@mail.com" },
+  {
+    scope: 2,
+    first: "Tolmas",
+    last: "O'rinov",
+    email: "o'rinov_007@mail.com",
+    country: "Uzbekiston",
+    zip: 456,
+    status: "member",
+  },
   {
     scope: 3,
     first: "Sardor",
     last: "Sunnatullayev",
     email: "sador_05_02@mail.com",
+    country: "Uzbekiston",
+    zip: 789,
+    status: "member",
   },
 ];
 
@@ -98,7 +111,6 @@ app.get("/index.html", async (req, res) => {
   const html = ejs.render(view, {
     projectName: "My Project",
     userName: "Jamshiddin",
-    table: tableData,
   });
   res.send(html);
 });
