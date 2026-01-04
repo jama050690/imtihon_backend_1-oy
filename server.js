@@ -30,7 +30,7 @@ const tableData = [
 ];
 
 //  PAGES
-app.get("/signin", async (req, res) => {
+app.get("/signin.html", async (req, res) => {
   const view = await fs.readFile("./signin.html", "utf8");
   const html = ejs.render(view, {
     projectName: "My Project",
@@ -39,7 +39,7 @@ app.get("/signin", async (req, res) => {
   res.send(html);
 });
 
-app.get("/signup", async (req, res) => {
+app.get("/signup.html", async (req, res) => {
   const view = await fs.readFile("./signup.html", "utf8");
   const html = ejs.render(view, {
     projectName: "My Project",
@@ -48,7 +48,7 @@ app.get("/signup", async (req, res) => {
   res.send(html);
 });
 
-app.get("/404", async (req, res) => {
+app.get("/404.html", async (req, res) => {
   const view = await fs.readFile("./404.html", "utf8");
   const html = ejs.render(view, {
     projectName: "My Project",
@@ -56,7 +56,7 @@ app.get("/404", async (req, res) => {
   });
   res.send(html);
 });
-app.get("/chart", async (req, res) => {
+app.get("/chart.html", async (req, res) => {
   const view = await fs.readFile("./chart.html", "utf8");
   const html = ejs.render(view, {
     projectName: "My Project",
@@ -65,16 +65,7 @@ app.get("/chart", async (req, res) => {
   res.send(html);
 });
 
-app.get("/chart", async (req, res) => {
-  const view = await fs.readFile("./chart.html", "utf8");
-  const html = ejs.render(view, {
-    projectName: "My Project",
-    userName: "Jamshiddin",
-  });
-  res.send(html);
-});
-
-app.get("/blank", async (req, res) => {
+app.get("/blank.html", async (req, res) => {
   const view = await fs.readFile("./blank.html", "utf8");
   const html = ejs.render(view, {
     projectName: "My Project",
@@ -83,7 +74,7 @@ app.get("/blank", async (req, res) => {
   res.send(html);
 });
 
-app.get("/widget", async (req, res) => {
+app.get("/widget.html", async (req, res) => {
   const view = await fs.readFile("./widget.html", "utf8");
   const html = ejs.render(view, {
     projectName: "My Project",
@@ -92,7 +83,7 @@ app.get("/widget", async (req, res) => {
   res.send(html);
 });
 
-app.get("/table", async (req, res) => {
+app.get("/table.html", async (req, res) => {
   const view = await fs.readFile("./table.html", "utf8");
   const html = ejs.render(view, {
     projectName: "My Project",
@@ -102,7 +93,7 @@ app.get("/table", async (req, res) => {
   res.send(html);
 });
 
-app.get("/index", async (req, res) => {
+app.get("/index.html", async (req, res) => {
   const view = await fs.readFile("./index.html", "utf8");
   const html = ejs.render(view, {
     projectName: "My Project",
