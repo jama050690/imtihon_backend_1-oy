@@ -109,16 +109,115 @@
         <!-- CHARTS -->
         <div class="container-fluid pt-4 px-4">
           <div class="row g-4">
-            <% charts.forEach(c => { %>
+            <% charts.forEach(chart => { %>
             <div class="col-sm-12 col-xl-6">
               <div class="bg-secondary text-center rounded p-4">
                 <div
                   class="d-flex align-items-center justify-content-between mb-4"
                 >
-                  <h6 class="mb-0"><%= c.title %></h6>
+                  <h6 class="mb-0"><%= chart.title %></h6>
                   <a href="#">Show All</a>
                 </div>
-                <canvas id="<%= c.canvasId %>"></canvas>
+
+                <canvas id="<%= chart.canvasId %>"></canvas>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+
+        <div class="container-fluid pt-4 px-4">
+          <div class="bg-secondary text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <h6 class="mb-0">Recent Sales</h6>
+              <a href="#">Show All</a>
+            </div>
+
+            <div class="table-responsive">
+              <table
+                class="table text-start align-middle table-bordered table-hover mb-0"
+              >
+                <thead>
+                  <tr class="text-white">
+                    <th></th>
+                    <th>Date</th>
+                    <th>Invoice</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% recentSales.forEach(row => { %>
+                  <tr>
+                    <td><input class="form-check-input" type="checkbox" /></td>
+                    <td><%= row.date %></td>
+                    <td><%= row.invoice %></td>
+                    <td><%= row.customer %></td>
+                    <td><%= row.amount %></td>
+                    <td><%= row.status %></td>
+                    <td>
+                      <a class="btn btn-sm btn-primary" href="#">Detail</a>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-xl-4">
+          <div class="h-100 bg-secondary rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h6 class="mb-0">Messages</h6>
+              <a href="#">Show All</a>
+            </div>
+
+            <% messages.forEach(msg => { %>
+            <div class="d-flex align-items-center border-bottom py-3">
+              <img
+                class="rounded-circle flex-shrink-0"
+                src="img/user.jpg"
+                style="width: 40px; height: 40px"
+              />
+              <div class="w-100 ms-3">
+                <div class="d-flex w-100 justify-content-between">
+                  <h6 class="mb-0"><%= msg.user %></h6>
+                  <small><%= msg.time %></small>
+                </div>
+                <span><%= msg.text %></span>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-xl-4">
+          <div class="h-100 bg-secondary rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <h6 class="mb-0">To Do List</h6>
+              <a href="#">Show All</a>
+            </div>
+
+            <div class="d-flex mb-2">
+              <input
+                class="form-control bg-dark border-0"
+                type="text"
+                placeholder="Enter task"
+              />
+              <button class="btn btn-primary ms-2">Add</button>
+            </div>
+
+            <% todos.forEach(todo => { %>
+            <div class="d-flex align-items-center border-bottom py-2">
+              <input class="form-check-input m-0" type="checkbox" <%= todo.done
+              ? "checked" : "" %> />
+              <div class="w-100 ms-3 d-flex justify-content-between">
+                <span>
+                  <% if (todo.done) { %><del><%= todo.text %></del><% } else {
+                  %><%= todo.text %><% } %>
+                </span>
+                <button class="btn btn-sm"><i class="fa fa-times"></i></button>
               </div>
             </div>
             <% }) %>
@@ -133,7 +232,6 @@
     <!-- JS Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="/lib/chart/chart.min.js"></script>
     <script src="/lib/easing/easing.min.js"></script>
     <script src="/lib/waypoints/waypoints.min.js"></script>

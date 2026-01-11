@@ -31,34 +31,11 @@ const tableData = [
   },
 ];
 router.get("/table", (req, res) => {
-  res.render("table", {
+  res.render("tables", {
     projectName: "My Project",
     userName: "Jamshiddin",
     tableData,
   });
 });
-router.get("/:id", (req, res) => {
-  const id = req.params.id - 0;
-
-  const blog = findblog(id);
-
-  if (blog === null) {
-    res.render("error404");
-
-    return;
-  }
-
-  res.render("blog", { blog });
-});
-
-function findblog(id) {
-  for (const blog of blogs) {
-    if (blog.id === id) {
-      return blog;
-    }
-  }
-
-  return null;
-}
 
 export default router;
