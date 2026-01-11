@@ -1,29 +1,41 @@
 import express from "express";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-const PORT = 3000;
-import homeRouter from "./routes/home.js";
+import path from "path";
+import { fileURLToPath } from "url";
+
+import dashboardRouter from "./routes/dashboard.js";
 import tableRouter from "./routes/table.js";
+import chartRouter from "./routes/charter.js";
+import widgetRouter from "./routes/widget.js";
+import pageRouter from "./routes/pages.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export function main() {
-  console.log(__filename);
-  console.log(__dirname);
-
   const app = express();
+  const PORT = 3000;
 
   app.set("view engine", "ejs");
   app.set("views", path.join(__dirname, "views"));
   app.use(express.static(path.join(__dirname, "../public")));
 
-  //  PAGES
+  // ✅ DASHBOARD (HOME)
+  app.use("/", dashboardRouter);
 
-  app.use("/", homeRouter);
-  app.use("/table", tableRouter);
+  // ✅ MAIN SECTIONS
+  app.use("/widgets", widgetRouter);
+  app.use("/tables", tableRouter);
+  app.use("/charts", chartRouter);
+
+  // ✅ PAGES
+  app.use("/", pageRouter);
+
+  // ✅ 404
+  app.use((req, res) => {
+    res.status(404).render("404", { projectName: "My Project" });
+  });
 
   app.listen(PORT, () => {
-    console.log(` Server running on http://localhost:${PORT}`);
+    console.log(`🚀 http://localhost:${PORT}`);
   });
 }
