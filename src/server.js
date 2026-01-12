@@ -22,7 +22,7 @@ export function main() {
   app.use("/table", tableRouter);
   app.use("/chart", chartRouter);
   app.use("/widget", widgetRouter);
-  app.use("/", pageRouter); // signin, signup, blank, error-404
+  app.use("/", pageRouter);
 
   app.use((req, res) => {
     res.status(404).render("404", { projectName: "My Project" });

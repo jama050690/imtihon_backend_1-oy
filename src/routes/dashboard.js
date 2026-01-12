@@ -7,12 +7,14 @@ router.get("/", (req, res) => {
     userName: "Jamshiddin",
     charts: [
       {
+        type: "chart",
         title: "Worldwide Sales",
         canvasId: "worldwide-sales",
       },
       {
+        type: "chart",
         title: "Sales & Revenue",
-        canvasId: "sales-revenue",
+        canvasId: "salse-revenue",
       },
     ],
 
