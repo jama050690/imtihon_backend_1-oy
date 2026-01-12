@@ -3,9 +3,9 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import dashboardRouter from "./routes/dashboard.js";
-import tableRouter from "./routes/table.js";
-import chartRouter from "./routes/chart.js";
-import widgetRouter from "./routes/widget.js";
+import tableRouter from "./routes/tables.js";
+import chartRouter from "./routes/charts.js";
+import widgetRouter from "./routes/widgets.js";
 import pageRouter from "./routes/pages.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -19,9 +19,9 @@ export function main() {
   app.use(express.static(path.join(__dirname, "../public")));
 
   app.use("/", dashboardRouter);
-  app.use("/table", tableRouter);
-  app.use("/chart", chartRouter);
-  app.use("/widget", widgetRouter);
+  app.use("/tables", tableRouter);
+  app.use("/charts", chartRouter);
+  app.use("/widgets", widgetRouter);
   app.use("/", pageRouter);
 
   app.use((req, res) => {
