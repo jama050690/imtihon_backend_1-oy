@@ -28,6 +28,10 @@ export function main() {
   app.use("/tables", tableRouter);
   app.use("/charts", chartRouter);
   app.use("/widgets", widgetRouter);
+
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.json());
+
   app.use("/", pageRouter);
 
   app.listen(3000, () => console.log(" http://localhost:3000"));

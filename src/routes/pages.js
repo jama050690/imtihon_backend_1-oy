@@ -6,6 +6,14 @@ router.get("/signin", (req, res) => {
   res.render("signin", { projectName: "My Project", userName: "Jamshiddin" });
 });
 
+// POST — formni qabul qiladi
+router.post("/signin", (req, res) => {
+  const { email, password } = req.body;
+
+  // hozircha tekshiruvsiz
+  res.redirect("/");
+});
+
 router.get("/signup", (req, res) => {
   res.render("signup", { projectName: "My Project", userName: "Jamshiddin" });
 });
