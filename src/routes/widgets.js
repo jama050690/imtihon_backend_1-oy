@@ -6,6 +6,7 @@ router.get("/", (req, res) => {
   res.render("widget", {
     projectName: "My Project",
     userName: "Jamshiddin",
+    
   });
 });
 

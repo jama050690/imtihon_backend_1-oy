@@ -14,8 +14,14 @@ router.get("/blank", (req, res) => {
   res.render("blank", { projectName: "My Project", userName: "Jamshiddin" });
 });
 
-router.get("/error-404", (req, res) => {
-  res.render("404", { projectName: "My Project", userName: "Jamshiddin" });
+router.use((req, res) => {
+  res.status(404).render("404", {
+    projectName: "My Project",
+    userName: "Jamshiddin",
+    number: 404,
+    title: "Page Not Found",
+    text: "We’re sorry, the page you are looking for does not exist.",
+  });
 });
 
 export default router;

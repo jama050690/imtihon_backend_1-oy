@@ -18,15 +18,17 @@ export function main() {
   app.set("views", path.join(__dirname, "views"));
   app.use(express.static(path.join(__dirname, "../public")));
 
+  app.use((req, res, next) => {
+    res.locals.projectName = "My Project";
+    res.locals.userName = "Jamshiddint";
+    next();
+  });
+
   app.use("/", dashboardRouter);
   app.use("/tables", tableRouter);
   app.use("/charts", chartRouter);
   app.use("/widgets", widgetRouter);
   app.use("/", pageRouter);
-
-  app.use((req, res) => {
-    res.status(404).render("404", { projectName: "My Project" });
-  });
 
   app.listen(3000, () => console.log(" http://localhost:3000"));
 }
